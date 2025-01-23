@@ -78,11 +78,11 @@
                     return response.json();
                 })
                 .then(data => {
-                    // تصفية النتائج بناءً على رمز المادة
-                    const results = data.values.filter(row => row[0].includes(query));
+                    // تصفية النتائج بناءً على التطابق الكامل مع رمز المادة
+                    const results = data.values.filter(row => row[0] === query);
 
                     if (results.length > 0) {
-                        // عرض اسم المادة فوق الجدول (العمود الثالث يحتوي على اسم المادة)
+                        // عرض اسم المادة فوق الجدول (العمود الرابع يحتوي على اسم المادة)
                         document.getElementById('itemDisplay').textContent = `المادة: ${results[0][3] || 'غير متوفر'}`;
                     } else {
                         document.getElementById('itemDisplay').textContent = "المادة: غير موجودة";
